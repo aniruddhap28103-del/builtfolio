@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Choose Template – BUILTFOLIO</title>
+
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= ROOT ================= */
+:root {
+  --bg-dark: #0b0b0b;
+  --bg-card: #111;
+  --bg-soft: #161616;
+  --text-main: #eaeaea;
+  --text-muted: #9a9a9a;
+  --accent: #f5c518;
+}
+
+/* ================= BODY ================= */
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+header {
+  padding: 24px 60px;
+  border-bottom: 1px solid #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+header a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* ================= MAIN ================= */
+main {
+  padding: 80px 80px 120px;
+}
+
+/* ================= TITLE ================= */
+.title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title h1 {
+  font-size: 42px;
+}
+
+.title p {
+  margin-top: 12px;
+  color: var(--text-muted);
+}
+
+/* ================= TEMPLATE GRID ================= */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* ================= TEMPLATE CARD ================= */
+.template-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 20px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.template-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+}
+
+/* preview mock */
+.preview {
+  height: 180px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1d1d1d, #0f0f0f);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+}
+
+/* template info */
+.template-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.template-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* button */
+.template-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ================= CUSTOM CTA ================= */
+.custom {
+  margin-top: 100px;
+  text-align: center;
+  padding: 60px;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(245,197,24,0.15), transparent 60%);
+}
+
+.custom h2 {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.custom p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.custom a {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 40px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+  border-top: 1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BUILTFOLIO</div>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<main>
+
+  <div class="title">
+    <h1>Choose a Portfolio Template</h1>
+    <p>Start with a professionally designed structure or build your own from scratch.</p>
+  </div>
+
+  <!-- TEMPLATE GRID -->
+  <div class="template-grid">
+
+    <div class="template-card">
+      <div class="preview">Template Preview</div>
+      <h3>Minimal Jury Layout</h3>
+      <p>Clean grids. Clear storytelling. Jury-focused.</p>
+      <button onclick="downloadTemplate('minimal-jury.psd')">Use Template</button>
+    </div>
+
+    <div class="template-card">
+      <div class="preview">Template Preview</div>
+      <h3>Concept Driven</h3>
+      <p>Strong narratives and concept diagrams.</p>
+      <button onclick="downloadTemplate('concept-driven.psd')">Use Template</button>
+    </div>
+
+    <div class="template-card">
+      <div class="preview">Template Preview</div>
+      <h3>Internship Portfolio</h3>
+      <p>Professional documentation & drawings.</p>
+      <button onclick="downloadTemplate('internship.psd')">Use Template</button>
+    </div>
+
+    <div class="template-card">
+      <div class="preview">Template Preview</div>
+      <h3>Final Year Thesis</h3>
+      <p>Research-heavy, structured presentation.</p>
+      <button onclick="downloadTemplate('thesis.psd')">Use Template</button>
+    </div>
+
+  </div>
+
+  <!-- CUSTOM TEMPLATE CTA -->
+  <div class="custom">
+    <h2>Want Full Control?</h2>
+    <p>Create your own custom template from scratch using the BUILTFOLIO editor.</p>
+    <a href="studio.html">Create Custom Template</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2025 BUILTFOLIO · Designed for Architects
+</footer>
+
+<script>
+function downloadTemplate(fileName) {
+  const link = document.createElement("a");
+  link.href = "assets/psd/" + fileName;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+</body>
+</html>

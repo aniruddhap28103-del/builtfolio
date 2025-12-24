@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wireframe Hand Background</title>
+
+<style>
+  :root {
+    --bg: #0b0b0b;
+    --line: rgba(255,255,255,0.22);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 200vh;
+    background: var(--bg);
+    color: #fff;
+    font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  .wireframe-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  svg {
+    width: 120%;
+    max-width: 1600px;
+    transition: transform 0.3s ease;
+  }
+
+  path {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Demo content */
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: 10vh 10vw;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    max-width: 700px;
+  }
+
+  p {
+    margin-top: 1rem;
+    color: #aaa;
+    max-width: 500px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="wireframe-wrapper" id="wireframe">
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- LEFT HAND -->
+  <g>
+    <path d="M80 220 L180 170 L260 190 L240 260 L160 280 Z"/>
+    <path d="M180 170 L230 120 L300 140 L260 190 Z"/>
+    <path d="M160 280 L210 320 L270 300 L240 260 Z"/>
+    <path d="M230 120 L260 90 L320 110 L300 140 Z"/>
+  </g>
+
+  <!-- RIGHT HAND -->
+  <g>
+    <path d="M1120 220 L1020 170 L940 190 L960 260 L1040 280 Z"/>
+    <path d="M1020 170 L970 120 L900 140 L940 190 Z"/>
+    <path d="M1040 280 L990 320 L930 300 L960 260 Z"/>
+    <path d="M970 120 L940 90 L880 110 L900 140 Z"/>
+  </g>
+
+</svg>
+</div>
+
+<div class="content">
+  <h1>BUILTFOLIO</h1>
+  <p>Architecture Portfolio Builder — Human creativity meets digital craft.</p>
+</div>
+
+<script>
+  const wireframe = document.getElementById("wireframe");
+
+  // Mouse move parallax
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    wireframe.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  // Scroll movement
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY * 0.05;
+    wireframe.style.transform += ` translateY(${scrollY}px)`;
+  });
+</script>
+
+</body>
+</html>

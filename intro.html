@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BUILTFOLIO</title>
+
+<style>
+/* ================= ROOT ================= */
+:root {
+  --bg: #0b0b0b;
+  --accent: #f5c518;
+  --text: #eaeaea;
+  --muted: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ================= SINGLE MORPHING LOGO ================= */
+#brand-logo {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: var(--accent);
+  z-index: 10000;
+
+  transition:
+    left 1.2s cubic-bezier(0.77, 0, 0.175, 1),
+    top 1.2s cubic-bezier(0.77, 0, 0.175, 1),
+    font-size 1.2s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* final header position */
+#brand-logo.to-header {
+  left: 60px;
+  top: 22px;
+  font-size: 22px;
+  transform: translate(0, 0);
+}
+
+/* ================= HEADER ================= */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+/* nav */
+nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  margin-top: 20px;
+  color: var(--muted);
+}
+
+.hero-buttons {
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 40px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  #brand-logo.to-header {
+    left: 20px;
+    top: 18px;
+  }
+
+  header {
+    padding: 16px 20px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SINGLE LOGO -->
+<div id="brand-logo">BUILTFOLIO</div>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="#">Why</a>
+    <a href="#">How</a>
+    <a href="#">Features</a>
+    <a href="#">Start</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>
+      Design Your <span>Architecture Portfolio</span><br />
+      Like a Professional
+    </h1>
+    <p>
+      Online + PDF portfolios crafted for Indian architecture students.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn">Build My Portfolio</a>
+      <a href="#" class="btn">View Examples</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRANSITION LOGIC ================= -->
+<script>
+window.addEventListener("load", () => {
+  const logo = document.getElementById("brand-logo");
+  const hero = document.querySelector(".hero");
+
+  // 1️⃣ Pause logo in center
+  setTimeout(() => {
+    logo.classList.add("to-header");
+  }, 700);
+
+  // 2️⃣ Reveal hero AFTER logo reaches header
+  setTimeout(() => {
+    hero.classList.add("show");
+  }, 1700);
+});
+</script>
+
+</body>
+</html>
